@@ -16,6 +16,7 @@ wn.bgpic("blackwaterbackground.gif")
 wn.setup(width=800, height=600) # The height and width of screen
 wn.tracer(0)
 
+# Registering shape of gifs used in code
 wn.register_shape("deer.gif")
 wn.register_shape("deerright.gif")
 wn.register_shape("acorn.gif")
@@ -41,9 +42,9 @@ for _ in range(20):
     good_guy.speed(0) # Animation speed fast as possible //function speed
     good_guy.shape("acorn.gif") # Shape of player
     good_guy.color("blue") # Color of player
-    good_guy.penup() # Player wont draw 
-    good_guy.goto(-100, 250) # Start turtle the bottom
-    good_guy.speed = random.randint(1, 2) # Random speed between 1 & 4 for each good guy //This speed is a variable
+    good_guy.penup() # Pen wont draw 
+    good_guy.goto(-100, 250) # Start turtle from top left
+    good_guy.speed = random.randint(1, 2) # Random speed between 1 & 2 for each good guy //This speed is a variable
     good_guys.append(good_guy) # Adding each good_guy to good_guys list
 
 # Create list of bad guys
@@ -98,12 +99,12 @@ while True:
     # Move the Player
     if player.direction == "left": # -x Coordinate
         x = player.xcor() # Stores the xcor of player in x, starts at 0 on X axis
-        x -= 1 # minus 3 from x, this will repeat because it is true
+        x -= 1 # minus 1 from x, this will repeat because it is true
         player.setx(x) # Set coordinate
     
     if player.direction == "right": # -x Coordinate
         x = player.xcor() # Stores the xcor of player in x, starts at 0 on X axis
-        x += 1 # minus 3 from x, this will repeat because it is true
+        x += 1 # minus 1 from x, this will repeat because it is true
         player.setx(x) # Set coordinate    
 
 
@@ -128,14 +129,14 @@ while True:
             good_guy.goto(x, y) # Start from top
             score += 10 # Increases score by 10
             pen.clear() # To avoid overwriting on screen
-            pen.write("Score: {}    Lives: {}".format(score, lives), align="center", font=font)
+            pen.write("Score: {}    Lives: {}".format(score, lives), align="center", font=font) # Updating and displaying score when collision accurs
 
 
 
 # Move the bad guys
-    for bad_guy in bad_guys: # For every good guy in good_guys list
+    for bad_guy in bad_guys: # For every bad guy in bad_guys list
         y = bad_guy.ycor() # Gather his y position
-        y -= bad_guy.speed # utilizing the random tool in good_guy
+        y -= bad_guy.speed # utilizing the random tool in bad_guy
         bad_guy.sety(y) # Set position
 
         # check if off the screen
@@ -145,13 +146,13 @@ while True:
             bad_guy.goto(x, y) # Start from top
 
         # Check for a collision with the player
-        if bad_guy.distance(player) < 40: # If the distance from the good_guy to player is less than 40 //pixels are 40x40
+        if bad_guy.distance(player) < 40: # If the distance from the bad_guy to player is less than 40 //pixels are 40x40
             x = random.randint(-380, 380) # Random tool to make game interesting, screen is 400x400
             y = random.randint(300, 400) # Start off screen?
             bad_guy.goto(x, y) # Start from top
             score -= 10 # Decreases score by 10
             lives -= 1 # Everytime we collide with bad guy, take away one life
             pen.clear() # To avoid overwriting on screen
-            pen.write("Score: {}    Lives: {}".format(score, lives), align="center", font=font)
+            pen.write("Score: {}    Lives: {}".format(score, lives), align="center", font=font) # Updating and displaying score when collision accurs
        
 wn.mainloop()
