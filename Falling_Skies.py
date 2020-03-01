@@ -12,7 +12,7 @@ lives = 3
 wn = turtle.Screen()
 wn.title("Falling Skies by @iNode.code") #Title of screen
 wn.bgcolor("black") # background color
-wn.bgpic("blackwaterbackground.gif")
+wn.bgpic("cattlesheepbg3.gif")
 wn.setup(width=800, height=600) # The height and width of screen
 wn.tracer(0)
 
@@ -66,7 +66,7 @@ pen = turtle.Turtle() # Turtle object
 pen.hideturtle() # Wont show pen on screen
 pen.speed(0) # Animation speed fast as possible
 pen.shape("square") # Shape of player
-pen.color("black") # Color of player
+pen.color("white") # Color of player
 pen.penup() # Player wont draw 
 pen.goto(0, 260) # Position of where the pen writes
 font = ("Courier", 24, "normal") # Font type, size 24, normal font
